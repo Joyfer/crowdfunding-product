@@ -1,9 +1,8 @@
 import { createApp } from "vue";
-import router from './router'
 import App from "./App.vue";
 import "./index.css";
+import { store, key } from "./store/index";
 
-const app = createApp({});
-app.use(router);
-
-createApp(App).use(router).mount('#app')
+const app = createApp(App);
+app.use(store, key);
+app.mount("#app");
