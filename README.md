@@ -1,3 +1,3 @@
-# Vue 3, Vite, TS, Tailwind, 
-## Vuex, Volar and Script Setup
+# Vue 3, Vite, TS, Tailwind 
+## Vuex, Material Icons
 A base for future projects
