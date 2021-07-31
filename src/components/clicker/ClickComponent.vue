@@ -6,17 +6,23 @@
   ></div>
 </template>
 
-<script setup lang="ts">
+<script lang="ts">
+import { defineComponent } from "vue";
 import { onMounted } from "@vue/runtime-core";
 import { useStore } from "../../store/index";
 
-const store = useStore();
+export default defineComponent({
+  setup() {
+    const store = useStore();
 
-const addBananasNumberCounter: number = store.state.moreBananas;
-const mySetInterval = setInterval(() => store.commit("increment"), 10000);
 
+    const mySetInterval = setInterval(() => store.commit("increment"), store.state.moreBananas);
 
-onMounted(() => ():any => mySetInterval);
+    onMounted(() => (): any => mySetInterval);
+
+    return {store};
+  },
+});
 </script>
 
 <style scoped></style>

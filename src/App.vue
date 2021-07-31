@@ -1,17 +1,24 @@
 <template>
- <ClickComponent />
+  <div class="px-2">
+    <ClickComponent />
+    <div class="my-4">
+      <BuyUpgrade />
+    </div>
+  </div>
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue'
-import ClickComponent from './components/clicker/ClickComponent.vue'
+import { defineComponent } from "vue";
+import ClickComponent from "./components/clicker/ClickComponent.vue";
+import BuyUpgrade from "./components/clicker/BuyUpgrade.vue";
 
 export default defineComponent({
-  name: 'App',
+  name: "App",
   components: {
-    ClickComponent
-  }
-})
+    ClickComponent,
+    BuyUpgrade,
+  },
+});
 </script>
 
 <style>
