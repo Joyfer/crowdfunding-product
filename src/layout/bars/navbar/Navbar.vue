@@ -1,5 +1,8 @@
 <template>
-  <div class="py-4 bg-primary flex"><SearchInput></SearchInput></div>
+  <div class="py-4 px-2 bg-primary flex justify-between content-center">
+    <div>Logo</div>
+    <div><SearchInput></SearchInput></div>
+  </div>
 </template>
 
 <script lang="ts">
