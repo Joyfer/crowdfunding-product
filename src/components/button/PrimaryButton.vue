@@ -18,7 +18,7 @@ export default defineComponent({
       required: false,
       default: "primary",
       validator: (val: string) =>
-        ["primary", "secondary", "success"].includes(val),
+        ["primary", "secondary", "success", "white"].includes(val),
     },
     text: { type: Boolean, required: false, default: false },
     icon: { type: String, required: false },
@@ -47,6 +47,8 @@ export default defineComponent({
             props.text && props.color === "secondary",
           "text-success hover:bg-success-light hover:bg-opacity-10":
             props.text && props.color === "success",
+          "text-white":
+            props.text && props.color === "white",
         };
       }
     );
@@ -63,10 +65,15 @@ export default defineComponent({
   >
     <span class="text-sm font-bold uppercase inline-flex"
       ><slot>Sumar</slot
-      ><SvgIcon v-if="icon" class="ml-2" type="mdi" :size="18" :path="icon"></SvgIcon
+      ><SvgIcon
+        v-if="icon"
+        class="ml-2"
+        type="mdi"
+        :size="18"
+        :path="icon"
+      ></SvgIcon
     ></span>
   </button>
 </template>
 
-<style scoped>
-</style>
+<style scoped></style>
