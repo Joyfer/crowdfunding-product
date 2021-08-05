@@ -6,9 +6,9 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        primary: { light: "#2489cc", DEFAULT: "#007acc"},
-        secondary: { light: colors.red[500], DEFAULT: colors.red[600] },
-        success: {light: "#5dd8a0" , DEFAULT: "#41B883"}
+        primary: { DEFAULT: "#3cb4ac", dark: "#147b74" },
+        secondary: { DEFAULT: colors.red[600] },
+        success: { DEFAULT: "#41B883" },
       },
     },
   },

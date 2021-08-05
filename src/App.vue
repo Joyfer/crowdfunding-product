@@ -1,5 +1,7 @@
 <template>
-  <MainLayout></MainLayout>
+  <MainLayout
+    ><template v-slot:default><router-view></router-view></template
+  ></MainLayout>
 </template>
 
 <script lang="ts">
@@ -13,7 +15,7 @@ export default defineComponent({
 
 <style>
 #app {
-  font-family: "Varela Round", sans-serif;
+  font-family: 'Commissioner', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
