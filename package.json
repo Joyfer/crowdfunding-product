@@ -1,5 +1,5 @@
 {
-  "name": "clicker",
+  "name": "crowdfunding-product",
   "version": "0.0.0",
   "scripts": {
     "dev": "vite",
