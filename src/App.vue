@@ -15,8 +15,11 @@ export default defineComponent({
 
 <style>
 #app {
-  font-family: 'Commissioner', sans-serif;
+  font-family: "Commissioner", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+body {
+  background: rgb(248, 248, 248);
 }
 </style>
