@@ -1,9 +1,9 @@
 <template>
   <button
     :class="
-      `bg-primary text-white px-10 py-5 rounded-full font-bold hover:bg-primary-dark ` +
+      `text-white px-10 py-5 rounded-full font-bold  ` +
       `transition duration-500 ease-in-out ` +
-      (disabled ? `cursor-not-allowed` : ``)
+      (disabled ? `cursor-not-allowed bg-gray-300` : `bg-primary hover:bg-primary-dark`)
     "
     :disabled="disabled"
   >

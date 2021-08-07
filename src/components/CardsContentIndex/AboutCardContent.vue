@@ -18,7 +18,7 @@
             v-for="(item, index) in pledgeList"
             :key="index"
             class="rounded-lg border-custom border-gray-300 px-4 py-6 md:p-8"
-            :class="item.lefts === 0 ? 'filter grayscale' : ''"
+            :class="item.lefts === 0 ? 'opacity-60' : ''"
           >
             <div class="flex flex-col md:justify-between md:flex-row">
               <h3 class="font-bold text-xl">{{ item.name }}</h3>
