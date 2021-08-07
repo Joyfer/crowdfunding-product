@@ -21,5 +21,10 @@ export default defineComponent({
 }
 body {
   background: rgb(248, 248, 248);
+  padding-bottom: 120px;
+}
+p {
+  letter-spacing: 0.025em; 
+  line-height: 1.7rem;
 }
 </style>

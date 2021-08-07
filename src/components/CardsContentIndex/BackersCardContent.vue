@@ -24,7 +24,12 @@ export default defineComponent({
     ProgressBar,
   },
   setup() {
-    const data = [
+    interface dataObjects {
+      title: string;
+      sub: string;
+    }
+
+    const data: dataObjects[] = [
       { title: "$89,914", sub: "of $100,000 backed" },
       { title: "5,007", sub: "total backers" },
       { title: "56", sub: "days left" },

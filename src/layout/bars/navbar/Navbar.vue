@@ -4,9 +4,9 @@
       <img :src="mySvg" />
     </div>
     <ul class="flex space-x-8 text-white">
-      <li>About</li>
-      <li>Discover</li>
-      <li>Get Started</li>
+      <li><a class="hover:underline" href="#">About</a></li>
+      <li><a class="hover:underline" href="#">Discover</a></li>
+      <li><a class="hover:underline" href="#">Get Started</a></li>
     </ul>
   </div>
 </template>
@@ -31,7 +31,11 @@ export default defineComponent({
 
 <style scoped>
 .gradient {
-background: rgb(0,0,0);
-background: linear-gradient(180deg, rgba(0, 0, 0, 0.466) 0%, rgba(255,255,255,0) 100%);
+  background: rgb(0, 0, 0);
+  background: linear-gradient(
+    180deg,
+    rgba(0, 0, 0, 0.466) 0%,
+    rgba(255, 255, 255, 0) 100%
+  );
 }
 </style>
