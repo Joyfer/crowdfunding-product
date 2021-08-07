@@ -3,14 +3,14 @@
     <Card :masterCraft="true">
       <template #default>
         <div class="text-center my-4">
-          <h1 class="font-bold text-3xl">Mastercraft Bamboo Monitor Riser</h1>
+          <h1 class="font-bold text-2xl sm:text-3xl px-4">Mastercraft Bamboo Monitor Riser</h1>
           <p class="mt-5 text-gray-600 mb-10">
             A beautiful & handcrafted monitor stand to reduce neck and eye
             strain.
           </p>
         </div></template
       ><template #actions
-        ><Button>Back this project</Button><BookmarkButton></BookmarkButton
+        ><Button class="flex-grow sm:flex-grow-0 mr-2">Back this project</Button><BookmarkButton></BookmarkButton
       ></template>
     </Card>
   </div>

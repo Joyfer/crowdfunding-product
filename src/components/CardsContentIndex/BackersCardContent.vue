@@ -1,10 +1,11 @@
 <template>
   <Card>
     <template #default
-      ><div class="grid grid-cols-3 divide-x-2 divide-solid gap-4">
-        <div v-for="({ title, sub }, index) in data" :key="index" class="pl-12">
+      ><div class="grid grid-cols-1 md:grid-cols-3 md:divide-x-2 divide-solid gap-4">
+        <div v-for="({ title, sub }, index) in data" :key="index" class="text-center md:text-left md:pl-12">
           <h1 class="font-bold text-4xl">{{ title }}</h1>
           <p class="mt-4 text-gray-600">{{ sub }}</p>
+          <hr class="mx-24 mt-6 block md:hidden">
         </div>
       </div>
       <div class="mt-12"><ProgressBar /></div

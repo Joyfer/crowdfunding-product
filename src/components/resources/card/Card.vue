@@ -2,7 +2,7 @@
   <div v-if="masterCraft" class="absolute inset-x-0 w-full -mt-8">
     <img class="mx-auto" src="../../../assets/icon/logo-mastercraft.svg" />
   </div>
-  <div class="bg-white border-custom shadow-sm p-12 rounded-md">
+  <div class="bg-white border-custom shadow-sm px-5 py-10 sm:px-12 rounded-md">
     <div>
       <slot></slot>
     </div>

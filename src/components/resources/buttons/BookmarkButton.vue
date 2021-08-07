@@ -7,7 +7,7 @@
         alt="BookmarkButtonIcon"
       />
     </div>
-    <div class="px-10 py-5 text-gray-500">Bookmark</div>
+    <div class="px-10 py-5 text-gray-500 hidden sm:block">Bookmark</div>
   </button>
 </template>
 
