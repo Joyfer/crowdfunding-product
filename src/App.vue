@@ -2,14 +2,16 @@
   <MainLayout
     ><template v-slot:default><router-view></router-view></template
   ></MainLayout>
+  <ModalPledgeList />
 </template>
 
 <script lang="ts">
 import { defineComponent } from "vue";
 import MainLayout from "./layout/MainLayout.vue";
+import ModalPledgeList from "./components/modal/ModalPledgeList.vue";
 export default defineComponent({
   name: "App",
-  components: { MainLayout },
+  components: { MainLayout, ModalPledgeList },
 });
 </script>
 
@@ -24,7 +26,7 @@ body {
   padding-bottom: 120px;
 }
 p {
-  letter-spacing: 0.025em; 
+  letter-spacing: 0.025em;
   line-height: 1.7rem;
 }
 </style>
