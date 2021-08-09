@@ -25,6 +25,9 @@ body {
   background: rgb(248, 248, 248);
   padding-bottom: 120px;
 }
+.remove-overflow {
+  overflow-y: hidden;
+}
 p {
   letter-spacing: 0.025em;
   line-height: 1.7rem;

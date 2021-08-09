@@ -1,44 +1,62 @@
 <template>
   <teleport to="body">
-    <div class="modal" v-if="store.state.modal" @click.self="handleModal">
-
-        <Card class="w-2/3"><slot></slot></Card>
-      
-    </div>
+    <transition name="fade">
+      <div class="modal" v-if="isOpen" @click.self="$emit('closeModal')">
+        <Card class="w-2/3 h-5/6 overflow-auto"
+          ><div class="flex justify-end">
+            <IconButton @click="$emit('closeModal')"
+              ><img src="@/assets/icon/icon-close-modal.svg"
+            /></IconButton>
+          </div>
+          <slot></slot
+        ></Card>
+      </div>
+    </transition>
   </teleport>
 </template>
 
 <script lang="ts">
 import { defineComponent } from "vue";
-import { useStore } from "@/store/index";
 import Card from "@components/resources/card/Card.vue";
+import IconButton from "@components/resources/buttons/IconButton.vue";
 
 export default defineComponent({
   name: "Modal",
   components: {
     Card,
+    IconButton,
   },
   setup() {
-    const store = useStore();
-    const handleModal = (): void => {
-      store.commit("handleModal");
-    };
-    return { store, handleModal };
+    return {};
   },
+  props: {
+    isOpen: {
+      type: Boolean,
+      required: true,
+    },
+  },
+  emits: ["closeModal"],
 });
 </script>
 
 <style scoped>
 .modal {
-  position: absolute;
+  position: fixed;
   top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
   background-color: rgba(0, 0, 0, 0.5);
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  height: 100vh;
+}
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.5s ease;
+}
+
+.fade-enter-from,
+.fade-leave-to {
+  opacity: 0;
 }
 </style>

@@ -3,18 +3,28 @@ import { InjectionKey } from "vue";
 import { createStore, useStore as baseUseStore, Store } from "vuex";
 
 export interface State {
-  modal: boolean;
+  pledgeModal: boolean;
+  pledgeSelected: number;
 }
 
 export const key: InjectionKey<Store<State>> = Symbol();
 
 export const store = createStore<State>({
   state: {
-    modal: true,
+    pledgeModal: true,
+    pledgeSelected: 10,
   },
   mutations: {
-    handleModal(state) {
-      state.modal = !state.modal;
+    handlePledgeModal(state, payload: boolean) {
+      state.pledgeModal = payload;
+    },
+    changePledgeSelected(state, payload: number) {
+      state.pledgeSelected = payload;
+    },
+  },
+  actions: {
+    handlePledgeModalA(context, payload: boolean) {
+      context.commit("handlePledgeModal", payload);
     },
   },
 });
