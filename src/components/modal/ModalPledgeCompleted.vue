@@ -1,11 +1,6 @@
 <template>
-  <Modal :isOpen="store.state.pledgeModal" @closeModal="closeModal">
-    <h1 class="font-bold text-3xl">Back this project</h1>
-    <p class="mt-6 text-gray-600 mb-10 text-lg">
-      Want to support us in bringing Mastercraft Bamboo Monitor Riser out in the
-      world?
-    </p>
-    <div><PledgeListModal></PledgeListModal></div>
+  <Modal :isOpen="store.state.pledgeCompletedModal" @closeModal="closeModal">
+    hola
   </Modal>
 </template>
 
@@ -13,19 +8,19 @@
 import { defineComponent } from "vue";
 import Modal from "./modalBase/Modal.vue";
 import { useStore } from "@/store/index";
-import useModal from "@composable/useModal";
 import PledgeListModal from "@/components/CardsContentIndex/pledgeList/PledgeListModal.vue";
+import useModal from "@composable/useModal";
 
 export default defineComponent({
-  name: "ModalPledgeListModal",
+  name: "ModalPledgeCompleted",
   components: {
     Modal,
     PledgeListModal,
   },
   setup() {
     const store = useStore();
-    const { closeModal } = useModal("handlePledgeModal", store);
-
+    const { closeModal } = useModal('handlePledgeCompletedModal', store);
+    
     return { store, closeModal };
   },
 });

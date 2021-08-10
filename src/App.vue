@@ -3,15 +3,18 @@
     ><template v-slot:default><router-view></router-view></template
   ></MainLayout>
   <ModalPledgeList />
+  <ModalPledgeCompleted />
 </template>
 
 <script lang="ts">
 import { defineComponent } from "vue";
 import MainLayout from "./layout/MainLayout.vue";
 import ModalPledgeList from "./components/modal/ModalPledgeList.vue";
+import ModalPledgeCompleted from "./components/modal/ModalPledgeCompleted.vue";
+
 export default defineComponent({
   name: "App",
-  components: { MainLayout, ModalPledgeList },
+  components: { MainLayout, ModalPledgeList, ModalPledgeCompleted },
 });
 </script>
 

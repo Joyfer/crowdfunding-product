@@ -23,6 +23,7 @@
         <Button
           class="mt-10 md:mt-0 w-11/12 md:w-2/6"
           :disabled="item.lefts === 0"
+          @click="() => open(index + 1)"
           >{{ item.lefts === 0 ? "Out of stock" : "Select Reward" }}</Button
         >
       </div>
@@ -34,6 +35,8 @@
 import { defineComponent } from "vue";
 import Button from "@components/resources/buttons/Button.vue";
 import dataCardsOutlined from "@/assets/data";
+import { useStore } from "@/store/index";
+import useModal from "@composable/useModal";
 
 export default defineComponent({
   name: "PledgeList",
@@ -41,7 +44,14 @@ export default defineComponent({
     Button,
   },
   setup() {
-    return { pledgeList: dataCardsOutlined };
+    const store = useStore();
+    const { openModal } = useModal("handlePledgeModal", store);
+
+    const openModalPledgeAndSelect = (index: number): void => {
+      openModal();
+      store.commit("changePledgeSelected", index);
+    };
+    return { pledgeList: dataCardsOutlined, open: openModalPledgeAndSelect };
   },
 });
 </script>

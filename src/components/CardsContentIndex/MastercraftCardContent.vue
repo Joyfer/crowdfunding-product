@@ -26,7 +26,7 @@ import Card from "../resources/card/Card.vue";
 import BookmarkButton from "../resources/buttons/BookmarkButton.vue";
 import Button from "../resources/buttons/Button.vue";
 import { useStore } from "@/store/index";
-import useModifyBodyOverflow from "@composable/useModifyBodyOverflow";
+import useModal from "@composable/useModal";
 
 export default defineComponent({
   name: "MastercraftCardContent",
@@ -37,12 +37,8 @@ export default defineComponent({
   },
   setup() {
     const store = useStore();
-    const { handleOverflow } = useModifyBodyOverflow();
+    const { openModal } = useModal("handlePledgeModal", store);
 
-    const openModal = (): void => {
-      store.dispatch("handlePledgeModalA", true);
-      handleOverflow(true);
-    };
     return { openModal };
   },
 });

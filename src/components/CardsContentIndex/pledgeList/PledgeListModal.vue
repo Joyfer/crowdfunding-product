@@ -57,8 +57,10 @@
           <div class="my-auto flex space-x-2">
             <TextInputMoney
               @inputChange="pledgeCount = $event"
-              v-if="index != 0"
-            /><Button :disabled="pledgeCount < item.pledgePrice"
+              v-if="item.pledgePrice != undefined"
+            /><Button
+              :disabled="pledgeCount < item.pledgePrice"
+              @click="acceptPledge"
               >Continue</Button
             >
           </div>
@@ -74,6 +76,7 @@ import Button from "@components/resources/buttons/Button.vue";
 import dataCardsOutlined from "@/assets/data";
 import TextInputMoney from "@components/resources/form/TextInputMoney.vue";
 import { useStore } from "@/store/index";
+import useModal from "@composable/useModal";
 
 export default defineComponent({
   name: "PledgeListModal",
@@ -84,6 +87,14 @@ export default defineComponent({
   setup() {
     const store = useStore();
     const selected = ref<number>(10);
+    const { openModal } = useModal("handlePledgeCompletedModal", store);
+    const { closeModal } = useModal("handlePledgeModal", store);
+
+    const acceptPledge = (): void => {
+      openModal();
+      closeModal();
+    };
+
     const changeSelectedPledge = (index: number): void => {
       store.commit("changePledgeSelected", index);
     };
@@ -104,6 +115,7 @@ export default defineComponent({
       selected,
       changeSelectedPledge,
       pledgeCount,
+      acceptPledge,
     };
   },
 });
