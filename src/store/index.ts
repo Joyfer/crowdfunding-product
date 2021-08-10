@@ -6,6 +6,7 @@ export interface State {
   pledgeModal: boolean;
   pledgeCompletedModal: boolean;
   pledgeSelected: number;
+  backersTotalAmount: number;
 }
 
 export const key: InjectionKey<Store<State>> = Symbol();
@@ -15,6 +16,7 @@ export const store = createStore<State>({
     pledgeModal: false,
     pledgeCompletedModal: false,
     pledgeSelected: 10,
+    backersTotalAmount: 89914,
   },
   mutations: {
     handlePledgeModal(state, payload: boolean) {
@@ -26,8 +28,21 @@ export const store = createStore<State>({
     changePledgeSelected(state, payload: number) {
       state.pledgeSelected = payload;
     },
+    incrementBackersTotalAmount(state, payload: number) {
+      state.backersTotalAmount = payload;
+    },
   },
   actions: {
+    incrementBackersTotalAmountA(context, payload: number) {
+      if (context.state.backersTotalAmount + payload < 100000) {
+        context.commit(
+          "incrementBackersTotalAmount",
+          context.state.backersTotalAmount + payload
+        );
+      } else {
+        context.commit("incrementBackersTotalAmount", 100000);
+      }
+    },
   },
 });
 

@@ -19,7 +19,9 @@
         </div>
         <div>
           <div class="flex flex-col md:justify-between md:flex-row">
-            <div class="flex content-center items-center">
+            <div
+              class="flex md:content-center md:items-center flex-col md:flex-row"
+            >
               <h3 class="font-bold text-xl" v-if="item.lefts === 0">
                 {{ item.name }}
               </h3>
@@ -31,29 +33,41 @@
                 {{ item.name }}
               </h3>
               <span
-                class="text-primary ml-4 font-medium mt-2 md:mt-0"
+                class="text-primary md:ml-4 font-medium mt-2 md:mt-0"
                 v-if="item.pledgePrice != undefined"
                 >Pledge ${{ item.pledgePrice }} or more</span
               >
             </div>
-            <div class="flex items-center" v-if="item.lefts != undefined">
+            <div
+              class="hidden items-center md:flex"
+              v-if="item.lefts != undefined"
+            >
               <h1 class="font-bold text-2xl">
                 {{ item.lefts }}
               </h1>
               <p class="text-gray-600 ml-2 align-text-bottom">left</p>
             </div>
           </div>
-          <p class="text-gray-600 mt-6 mb-10">
+          <p class="text-gray-600 mt-6 mb-6">
             {{ item.description }}
           </p>
+          <div
+            class="flex items-center md:hidden"
+            v-if="item.lefts != undefined"
+          >
+            <h1 class="font-bold text-2xl">
+              {{ item.lefts }}
+            </h1>
+            <p class="text-gray-600 ml-2 align-text-bottom">left</p>
+          </div>
         </div>
       </div>
       <transition name="width">
         <div
-          class="flex flex-col md:justify-between md:flex-row px-8 border-custom-top border-gray-300 h-24"
+          class="flex flex-col py-4 md:justify-between md:flex-row items-center px-8 border-custom-top border-gray-300"
           v-show="index === store.state.pledgeSelected"
         >
-          <p class="my-auto">Enter your pledge.</p>
+          <p class="md:my-auto mb-4">Enter your pledge.</p>
           <div class="my-auto flex space-x-2">
             <TextInputMoney
               @inputChange="pledgeCount = $event"
@@ -89,16 +103,19 @@ export default defineComponent({
     const selected = ref<number>(10);
     const { openModal } = useModal("handlePledgeCompletedModal", store);
     const { closeModal } = useModal("handlePledgeModal", store);
+    const pledgeCount = ref<number>(0);
 
     const acceptPledge = (): void => {
-      openModal();
       closeModal();
+      store.dispatch("incrementBackersTotalAmountA", pledgeCount.value);
+      setTimeout(() => {
+        openModal();
+      }, 100);
     };
 
     const changeSelectedPledge = (index: number): void => {
       store.commit("changePledgeSelected", index);
     };
-    const pledgeCount = ref<number>(0);
 
     const pledgeList: typeof dataCardsOutlined = [
       {

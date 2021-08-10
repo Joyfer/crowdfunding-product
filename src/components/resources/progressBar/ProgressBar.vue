@@ -3,21 +3,25 @@
     <div class="w-full bg-gray-300 rounded-lg h-4">
       <div
         class="bg-primary h-full rounded-lg width-animation"
-        :style="{ width: number + '%' }"
+        :style="{ width: progressNumber + '%' }"
       ></div>
     </div>
   </div>
 </template>
 
 <script lang="ts">
-import { defineComponent, ref } from "vue";
+import { defineComponent } from "vue";
 
 export default defineComponent({
   name: "ProgressBar",
   setup() {
-    const number = ref(50);
-
-    return { number };
+    return {};
+  },
+  props: {
+    progressNumber: {
+      type: Number,
+      default: 0,
+    },
   },
 });
 </script>

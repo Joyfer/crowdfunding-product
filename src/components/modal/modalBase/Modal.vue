@@ -2,7 +2,7 @@
   <teleport to="body">
     <transition name="fade">
       <div class="modal" v-if="isOpen" @click.self="$emit('closeModal')">
-        <Card class="w-2/3 h-5/6 overflow-auto"
+        <Card :class="`${classes} overflow-auto`" 
           ><div class="flex justify-end">
             <IconButton @click="$emit('closeModal')"
               ><img src="@/assets/icon/icon-close-modal.svg"
@@ -34,6 +34,10 @@ export default defineComponent({
       type: Boolean,
       required: true,
     },
+    classes: {
+      type: String,
+      required: false
+    }
   },
   emits: ["closeModal"],
 });
