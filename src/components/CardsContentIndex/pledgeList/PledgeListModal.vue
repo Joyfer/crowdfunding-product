@@ -22,7 +22,7 @@
             <div
               class="flex md:content-center md:items-center flex-col md:flex-row"
             >
-              <h3 class="font-bold text-xl" v-if="item.lefts === 0">
+              <h3 class="font-bold text-xl" v-if="item?.lefts === 0">
                 {{ item.name }}
               </h3>
               <h3
@@ -34,16 +34,16 @@
               </h3>
               <span
                 class="text-primary md:ml-4 font-medium mt-2 md:mt-0"
-                v-if="item.pledgePrice != undefined"
+                v-if="item.pledgePrice != 0"
                 >Pledge ${{ item.pledgePrice }} or more</span
               >
             </div>
             <div
               class="hidden items-center md:flex"
-              v-if="item.lefts != undefined"
+              v-if="item.pledgePrice != 0"
             >
               <h1 class="font-bold text-2xl">
-                {{ item.lefts }}
+                {{ item?.lefts }}
               </h1>
               <p class="text-gray-600 ml-2 align-text-bottom">left</p>
             </div>
@@ -53,7 +53,7 @@
           </p>
           <div
             class="flex items-center md:hidden"
-            v-if="item.lefts != undefined"
+            v-if="item.pledgePrice != 0"
           >
             <h1 class="font-bold text-2xl">
               {{ item.lefts }}
@@ -73,7 +73,7 @@
               @inputChange="pledgeCount = $event"
               v-if="item.pledgePrice != undefined"
             /><Button
-              :disabled="pledgeCount < item.pledgePrice"
+              :disabled="pledgeCount < item?.pledgePrice"
               @click="acceptPledge"
               >Continue</Button
             >
@@ -122,6 +122,8 @@ export default defineComponent({
         name: "Pledge with no reward",
         description: `Choose to support us without a reward if you simply believe in our project. As a backer, you 
       will be signed up to receive product updates via email.`,
+        pledgePrice: 0,
+        lefts: 0
       },
       ...dataCardsOutlined,
     ];
