@@ -1,5 +1,5 @@
 <template>
-  <article class="space-y-5">
+  <article class="space-y-5 ">
     <div
       v-for="(item, index) in pledgeList"
       :key="index"
