@@ -1,7 +1,7 @@
 <template>
   <article class="space-y-5 ">
     <div
-      v-for="(item, index) in pledgeList"
+      v-for="(item, index) in dataCardsOutlined"
       :key="index"
       class="rounded-lg border-custom border-gray-300 px-4 py-6 md:p-8"
       :class="item.lefts === 0 ? 'opacity-60' : ''"
@@ -51,7 +51,7 @@ export default defineComponent({
       openModal();
       store.commit("changePledgeSelected", index);
     };
-    return { pledgeList: dataCardsOutlined, open: openModalPledgeAndSelect };
+    return { dataCardsOutlined, open: openModalPledgeAndSelect };
   },
 });
 </script>

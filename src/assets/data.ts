@@ -1,8 +1,8 @@
 interface dataCardsOutlined {
   name: string;
   description: string;
-  lefts?: number;
-  pledgePrice?: number;
+  lefts: number;
+  pledgePrice: number;
 }
 
 const dataCardsOutlined: dataCardsOutlined[] = [
