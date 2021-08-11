@@ -34,13 +34,13 @@
               </h3>
               <span
                 class="text-primary md:ml-4 font-medium mt-2 md:mt-0"
-                v-if="item.pledgePrice != 0"
+                v-if="item.pledgePrice != undefined"
                 >Pledge ${{ item.pledgePrice }} or more</span
               >
             </div>
             <div
               class="hidden items-center md:flex"
-              v-if="item.pledgePrice != 0"
+              v-if="item.pledgePrice != 0 && item.pledgePrice != undefined"
             >
               <h1 class="font-bold text-2xl">
                 {{ item?.lefts }}
@@ -53,7 +53,7 @@
           </p>
           <div
             class="flex items-center md:hidden"
-            v-if="item.pledgePrice != 0"
+            v-if="item.pledgePrice != 0 && item.pledgePrice != undefined"
           >
             <h1 class="font-bold text-2xl">
               {{ item.lefts }}
@@ -73,7 +73,7 @@
               @inputChange="pledgeCount = $event"
               v-if="item.pledgePrice != undefined"
             /><Button
-              :disabled="pledgeCount < item?.pledgePrice"
+              :disabled="test(item?.pledgePrice, pledgeCount)"
               @click="acceptPledge"
               >Continue</Button
             >
@@ -122,11 +122,26 @@ export default defineComponent({
         name: "Pledge with no reward",
         description: `Choose to support us without a reward if you simply believe in our project. As a backer, you 
       will be signed up to receive product updates via email.`,
-        pledgePrice: 0,
-        lefts: 0
+        pledgePrice: undefined,
+        lefts: undefined,
       },
       ...dataCardsOutlined,
     ];
+
+    const test = (
+      item: number | undefined,
+      pledgeCountf: typeof pledgeCount.value
+    ): boolean => {
+      if (item != undefined) {
+        if (item > pledgeCountf) {
+          return true;
+        } else {
+          return false;
+        }
+      } else {
+        return false;
+      }
+    };
 
     return {
       pledgeList,
@@ -135,6 +150,7 @@ export default defineComponent({
       changeSelectedPledge,
       pledgeCount,
       acceptPledge,
+      test,
     };
   },
 });
