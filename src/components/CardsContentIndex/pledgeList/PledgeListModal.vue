@@ -73,7 +73,7 @@
               @inputChange="pledgeCount = $event"
               v-if="item.pledgePrice != undefined"
             /><Button
-              :disabled="test(item?.pledgePrice, pledgeCount)"
+              :disabled="verifyPledgeAmount(item?.pledgePrice, pledgeCount)"
               @click="acceptPledge"
               >Continue</Button
             >
@@ -128,7 +128,7 @@ export default defineComponent({
       ...dataCardsOutlined,
     ];
 
-    const test = (
+    const verifyPledgeAmount = (
       item: number | undefined,
       pledgeCountf: typeof pledgeCount.value
     ): boolean => {
@@ -150,7 +150,7 @@ export default defineComponent({
       changeSelectedPledge,
       pledgeCount,
       acceptPledge,
-      test,
+      verifyPledgeAmount,
     };
   },
 });
